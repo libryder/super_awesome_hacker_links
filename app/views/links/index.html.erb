@@ -1,0 +1,35 @@
+<%= link_to 'Sign Out', destroy_user_session_path, method: 'delete', :class => 'btn btn-mini', :id => 'logout' %>
+
+<%- model_class = Link.new.class -%>
+<h1>Super Awesome Hacker Links</h1>
+
+<%- flash.each do |key, msg| -%>
+  <div id="<%= key %>">
+    <p><%= msg %></p>
+  </div>
+<%- end -%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Rate</th>
+      <th>Link</th>
+      <th><%= model_class.human_attribute_name(:rating) %></th>
+      <th>Submitted By</th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link_to '+1', rate_link_path(link.id), method: 'put', :class => 'btn btn-mini' %></td>
+        <td><%= link_to link.description, link.url %></td>
+        <td>+<%= link.rating %></td>
+        <td><%= link.user.email unless link.user.email.blank? %></td>
+        <td><%=l link.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Submit Awesome Shit", new_link_path, :class => 'btn btn-primary' %>
