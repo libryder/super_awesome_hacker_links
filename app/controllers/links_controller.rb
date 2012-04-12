@@ -48,6 +48,7 @@ class LinksController < ApplicationController
 
   def rate
     link = Link.find(params[:id])
+    user_session[:voted_links] = [] if user_session[:voted_links].nil?
 
     if current_user.id == link.user.id
       flash[:error] = "You Can't Vote On Your Own Link!"
@@ -58,14 +59,7 @@ class LinksController < ApplicationController
         redirect_to links_path
       else
         link.increment!(:rating)
-
-        if user_session[:voted_links]
-          user_session[:voted_links] << link.id
-        else
-          user_session[:voted_links] = []
-          user_session[:voted_links] << link.id
-        end
-
+        user_session[:voted_links] << link.id
         flash[:notice] = "Thanks for voting!"
         redirect_to links_path
       end
