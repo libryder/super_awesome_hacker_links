@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'sqlite3'
 gem 'json'
 gem "twitter-bootstrap-rails"
 gem 'rspec-rails'
@@ -16,6 +15,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :test, :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 
 group :test do
   gem 'turn', :require => false
