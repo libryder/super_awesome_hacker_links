@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :username
+
   has_many :links
   has_many :votes
   has_many :comments
 
-  #validates :username, :presence => true
+  validates :username, :presence => true
 end

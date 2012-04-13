@@ -10,7 +10,7 @@
       <tr>
         <td>
           <p>
-            <strong><%= comment.user.email %></strong> wrote on
+            <strong><%= comment.user.username %></strong> wrote on
             <strong><%= Date.parse(l @link.created_at).strftime('%m/%d/%Y') %></strong>
           </p>
           <p><%= comment.body %></p>
