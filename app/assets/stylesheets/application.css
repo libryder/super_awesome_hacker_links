@@ -12,6 +12,44 @@
  *= require_tree .
 */
 
+body.h1 { font-size: 40px; }
+
+#app_title {
+  margin: 10px 0 15px 0;
+  background: #ff6600;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 0 0 0 10px;
+}
+
+.link_details {
+  margin:-20px 0 20px 0;
+  color:#555;
+  font-size: 12px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding:5px 8px;
+  background:#eee;
+  border:1px solid #ddd;
+}
+
+a.has_not_voted, a.has_not_voted:visited { 
+  background: #0074CC; 
+  background-image: none; 
+  color: #eee;
+  background-color: #0074CC;
+  background-image: -moz-linear-gradient(top, #08C, #05C);
+  background-image: -ms-linear-gradient(top, #08C, #05C);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#08C), to(#05C));
+  background-image: -webkit-linear-gradient(top, #08C, #05C);
+  background-image: -o-linear-gradient(top, #08C, #05C);
+  background-image: linear-gradient(top, #08C, #05C);
+  border-color: #05C #05C #003580;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  text-shadow:-1px -1px 0 #05C;
+}
 
 #notice { background-color: #A4E7A0; border: 1px solid #26722D; }
 #error { background-color: #F0A8A8; border: 1px solid #900; }
@@ -46,3 +84,5 @@
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+
+

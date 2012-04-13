@@ -1,7 +1,6 @@
 <%= devise_link(user_signed_in?) %>
 
 <%- model_class = Link.new.class -%>
-<h1>Super Awesome Hacker Links</h1>
 
 <%- flash.each do |key, msg| -%>
   <div id="<%= key %>">
@@ -25,8 +24,8 @@
       <tr>
         <td><%= link.vote_button(link, current_user, user_signed_in?) %></td>
         <td><%= link_to link.description, link.url %></td>
-        <td>+<%= link.votes.size %></td>
-        <td><%= link_to "#{link.comments.size} | view", comments_path(:link_id => link.id), :class => 'btn btn-mini' %> </td>
+        <td class="vote_count">+<%= link.votes.size %></td>
+        <td><%= link_to "#{link.comments.size} | view", "/links/#{link.id}/comments", :class => 'btn btn-mini' %> </td>
         <td><%= link.user.email unless link.user.email.blank? %></td>
         <td><%= Date.parse(l link.created_at).strftime('%m/%d/%Y') %></td>
       </tr>

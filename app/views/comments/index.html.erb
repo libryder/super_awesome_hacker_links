@@ -1,6 +1,9 @@
 <%- model_class = Comment.new.class -%>
 <h1><%= link_to @link.description, @link.url %></h1>
-
+<p class="link_details">
+  <strong><%= @link.user.email %></strong> submitted on
+  <strong><%= Date.parse(l @link.created_at).strftime('%m/%d/%Y') %></strong>
+</p>
 <table class="table table-striped">
   <tbody>
     <% @comments.each do |comment| %>
