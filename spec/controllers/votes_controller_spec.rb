@@ -11,9 +11,8 @@ describe VotesController do
       let (:link) { FactoryGirl.create :link }
 
       it "creates a new Vote" do
-        puts controller.current_user
         expect {
-         post :create, { :link_id => link.id}
+          post :create, { :link_id => link.id}
         }.to change(Vote, :count).by(1)
       end
 

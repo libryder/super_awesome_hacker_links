@@ -7,7 +7,7 @@ describe CommentsController do
   end
 
   def valid_attributes
-    {:link_id => @link.id}
+    {:link_id => @link.id, :body => 'Hot Pants!'}
   end
   def valid_session
     {}
