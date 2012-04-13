@@ -31,7 +31,7 @@ $(document).ready(function() {
       else {
         prnt.parent().parent().find('.vote_count').html('+'+data.new_count)
         prnt.removeClass('has_not_voted');
-#//prnt.addClass('btn btn-mini');
+//prnt.addClass('btn btn-mini');
       }
     });
   });
