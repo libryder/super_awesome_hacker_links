@@ -23,9 +23,10 @@ describe VotesController do
         assigns(:vote).should be_persisted
       end
 
-      it "redirects to the home page after vote" do
+      it "returns a successful response" do
+        expected = { "new_count" => 1, "has_voted" => false }.to_json
         post :create, {:link_id => link.id}
-        response.should redirect_to(links_path)
+        response.body.should == expected
       end
     end
 

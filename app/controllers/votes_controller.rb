@@ -5,7 +5,6 @@ class VotesController < ApplicationController
     link = Link.find(params[:link_id])
 
     if current_user.votes.where(:link_id => params[:link_id]).count == 0
-
       @vote = current_user.votes.create(link_id: params[:link_id])
       #flash[:notice] = "Thanks for voting!"
       response = { "new_count" => link.votes.count, "has_voted" => false }
