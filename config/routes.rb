@@ -1,16 +1,15 @@
 Hacker::Application.routes.draw do
+  resources :comments
+
   devise_for :users
+
   root to: "links#index"
 
-  resources :links do
-    member do
-      put :rate
-    end
-  end
-
+  resources :links
+  resources :votes
   resources :users
-
-   # match 'links/:id/rate' => 'links#rate'
+  match '/links/:link_id/comments' => 'comments#index'
+     # match 'links/:id/rate' => 'links#rate'
 
 
   # The priority is based upon order of creation:
@@ -20,7 +19,7 @@ Hacker::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
-  # Sample of named route:
+  # Sample of named route:sd
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
 

@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe "Users" do
+describe "Votes" do
 end

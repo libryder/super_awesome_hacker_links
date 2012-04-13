@@ -1,4 +1,4 @@
-<%= link_to 'Sign Out', destroy_user_session_path, method: 'delete', :class => 'btn btn-mini', :id => 'logout' %>
+<%= devise_link(user_signed_in?) %>
 
 <%- model_class = Link.new.class -%>
 <h1>Super Awesome Hacker Links</h1>
@@ -14,22 +14,24 @@
     <tr>
       <th>Rate</th>
       <th>Link</th>
-      <th><%= model_class.human_attribute_name(:rating) %></th>
+      <th>Votes</th>
+      <th>Comments</th>
       <th>Submitted By</th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Submitted On</th>
     </tr>
   </thead>
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= link_to '+1', rate_link_path(link.id), method: 'put', :class => 'btn btn-mini' %></td>
+        <td><%= link.vote_button(link, current_user, user_signed_in?) %></td>
         <td><%= link_to link.description, link.url %></td>
-        <td>+<%= link.rating %></td>
+        <td>+<%= link.votes.size %></td>
+        <td><%= link_to "#{link.comments.size} | view", comments_path(:link_id => link.id), :class => 'btn btn-mini' %> </td>
         <td><%= link.user.email unless link.user.email.blank? %></td>
-        <td><%=l link.created_at %></td>
+        <td><%= Date.parse(l link.created_at).strftime('%m/%d/%Y') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "Submit Awesome Shit", new_link_path, :class => 'btn btn-primary' %>
+<%= link_to "Submit Awesome Shit", new_link_path, :class => 'btn btn-primary' if user_signed_in? %>

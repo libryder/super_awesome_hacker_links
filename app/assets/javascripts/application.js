@@ -14,3 +14,8 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//
+$(document).ready(function() {
+  $('#error, #notice').fadeIn().delay(1500).fadeOut(1000);
+});
+

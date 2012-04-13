@@ -15,11 +15,34 @@
 
 #notice { background-color: #A4E7A0; border: 1px solid #26722D; }
 #error { background-color: #F0A8A8; border: 1px solid #900; }
-#notice, #error { width: 90%; margin: 0 auto 10px auto; padding: 5px; }
-#notice p, #error p { margin-left: 20px; padding: 0; font-size: .75em; color: #000; }
+#notice, #error {
+  display:inline-block;
+  padding: 12px 15px;
+  display:none;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  position:absolute;
+  top:57px; left:583px;
+}
+#notice p, #error p { padding:0; margin:0; font-size:1em; color: #000; }
 #notice a, #error a { text-decoration: none; padding: 0 3px; }
 #notice a { border: 1px solid #26722D; color: #26722D; }
 #error a { border: 1px solid #900; color: #900; }
 #notice a:hover, #error a:hover { color: #333; border: 1px solid #333; }
 
 #logout { position:absolute; top:60px; right:80px; }
+
+.inactive_button {
+  display: inline-block;
+  padding: 0px 4px 2px;
+  margin-bottom: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #ddd;
+  text-align: center;
+  border: 1px solid #eee;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}

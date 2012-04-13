@@ -1,0 +1,20 @@
+<%- model_class = Comment.new.class -%>
+<h1><%= link_to @link.description, @link.url %></h1>
+
+<table class="table table-striped">
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td>
+          <p>
+            <strong><%= comment.user.email %></strong> wrote on
+            <strong><%= Date.parse(l @link.created_at).strftime('%m/%d/%Y') %></strong>
+          </p>
+          <p><%= comment.body %></p>
+        <td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to t('.new', :default => t("helpers.links.new")), new_comment_path(:link_id => params[:link_id]), :class => 'btn btn-primary' if user_signed_in? %>
+<%= link_to "Back to Links", '/', :class => 'btn btn-primary' %>

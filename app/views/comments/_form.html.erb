@@ -1,0 +1,18 @@
+<%= form_for @comment, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :body, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :body, :class => 'text_area' %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :link_id, :value => params[:link_id] %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                comments_path, :class => 'btn' %>
+  </div>
+<% end %>

@@ -1,10 +1,6 @@
 class LinksController < ApplicationController
   def index
-    if  user_signed_in?
-      @links = Link.rating_sort.all
-    else
-      redirect_to new_user_session_path
-    end
+    @links = LinkDecorator.all.sort_by { |l| l.votes.size.to_i }.reverse
   end
 
   def show
@@ -23,7 +19,7 @@ class LinksController < ApplicationController
     @link = Link.new(params[:link])
 
     if @link.save
-      redirect_to @link, notice: 'Link was successfully created.'
+      redirect_to links_path, notice: 'Link was successfully created.'
     else
       render action: "new"
     end
