@@ -25,6 +25,7 @@ group :production do
 end
 
 group :test do
+  gem 'nyan-cat-formatter'
   gem 'turn', :require => false
   gem 'rspec2-rails-views-matchers', '~> 0.2.0'
   gem 'capybara', '~> 1.1.2'

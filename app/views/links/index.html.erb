@@ -20,15 +20,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @links.each do |link| %>
-      <tr>
-        <td><%= link.vote_button(link, current_user, user_signed_in?) %></td>
-        <td><%= link_to link.description, link.url %></td>
-        <td class="vote_count">+<%= link.votes.size %></td>
-        <td><%= link_to "#{link.comments.size} | view", "/links/#{link.id}/comments", :class => 'btn btn-mini' %> </td>
-        <td><%= link.user.username %></td>
-        <td><%= Date.parse(l link.created_at).strftime('%m/%d/%Y') %></td>
-      </tr>
+    <% if @links.count > 0 %>
+      <% @links.each do |link| %>
+        <tr>
+          <td><%= link.vote_button(link, current_user, user_signed_in?) %></td>
+          <td><%= link_to link.description, link.url %></td>
+          <td class="vote_count">+<%= link.votes.size %></td>
+          <td><%= link_to "#{link.comments.size} | view", "/links/#{link.id}/comments", :class => 'btn btn-mini' %> </td>
+          <td><%= link.user.username %></td>
+          <td><%= Date.parse(l link.created_at).strftime('%m/%d/%Y') %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <p class="no_links">No links submitted. :(</p>
     <% end %>
   </tbody>
 </table>
