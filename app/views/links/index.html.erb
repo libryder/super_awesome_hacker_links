@@ -8,6 +8,8 @@
   </div>
 <%- end -%>
 
+<% if @links.count > 0 %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,7 +22,6 @@
     </tr>
   </thead>
   <tbody>
-    <% if @links.count > 0 %>
       <% @links.each do |link| %>
         <tr>
           <td><%= link.vote_button(link, current_user, user_signed_in?) %></td>
@@ -31,10 +32,11 @@
           <td><%= Date.parse(l link.created_at).strftime('%m/%d/%Y') %></td>
         </tr>
       <% end %>
-    <% else %>
-      <p class="no_links">No links submitted. :(</p>
-    <% end %>
   </tbody>
 </table>
+
+<% else %>
+  <p class="no_links">No links submitted. :(</p>
+<% end %>
 
 <%= link_to "Submit Awesome Shit", new_link_path, :class => 'btn btn-primary' if user_signed_in? %>
