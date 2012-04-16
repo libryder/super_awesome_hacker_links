@@ -25,6 +25,7 @@ group :production do
 end
 
 group :test do
+  gem 'simplecov'
   gem 'nyan-cat-formatter'
   gem 'turn', :require => false
   gem 'rspec2-rails-views-matchers', '~> 0.2.0'
